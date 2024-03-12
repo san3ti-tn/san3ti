@@ -24,7 +24,42 @@ module.exports = {
         }
     },
     signin: async (req, res) => {
-        
+        try {
+            const {email,password} = req.body;
+
+            if (!email || !password) {
+                return res.status(404).json({ error: "password not found." });
+            }
+
+            const user = await User.findOne({ where: { email:email } });
+            if (!user) {
+                return res.status(400).json({ error: "user not found." });
+            }
+            const passwordMatch = await bcrypt.compare(password, user.password);
+
+            if (!passwordMatch) {
+                return res.status(401).json({ error: "password is incorrect." });
+            }
+
+            const token = jwt.sign({
+                    userId: user.id
+                },
+                        process.env.jwt_Secret,
+                {
+                    expiresIn:"1d",
+                }
+
+            )
+
+            const base64Url = token.split('.')[1]
+            const base64 = base64Url.replace('-', '+').replace('_', '/')
+            const payload = JSON.parse(atob(base64))
+            res.status(200).json({ payload, token, message: 'succeeded' })
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
     },
 
     getAllUsers: async (req, res) => {
