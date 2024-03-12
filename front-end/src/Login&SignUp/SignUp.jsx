@@ -18,6 +18,7 @@ function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+
   const signup = (password,email)=>{
     axios.post("http://localhost:3000/api/users/signup",{
 password:password,
@@ -28,6 +29,9 @@ email:email
       console.log(error)
     })
   }  
+
+
+  
   return (
     <MDBContainer fluid>
 
