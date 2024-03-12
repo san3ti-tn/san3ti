@@ -3,14 +3,14 @@ const router = express.Router()
 
 
 
-const {} = require('../controllers/users')
+const { createProfile,getAllUsers,signin } = require('../controllers/users')
 
 
-router.route('/users').get()
+router.route('/users').get(getAllUsers)
 
 
-router.post('/users/signup',)
-router.post('/users/signin',)
+router.post('/users/signup',createProfile)
+router.post('/users/signin',signin)
 
 
 
