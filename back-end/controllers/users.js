@@ -1,7 +1,11 @@
 const { User } = require("../model")
 require('dotenv').config()
 const bcrypt = require("bcrypt")
+
 const jwt = require("jsonwebtoken")
+
+
+
 
 module.exports = {
     createProfile: async (req, res) => {
@@ -58,11 +62,15 @@ module.exports = {
 
             const base64Url = token.split('.')[1]
 
+
             console.log("base64Url :",base64Url)
             
             const base64 = base64Url.replace('-', '+').replace('_', '/')
 
             const payload = JSON.parse(atob(base64))
+
+
+            const payload = JSON.parse(atob(base64Url))
 
             res.status(200).json({ payload, token, message: 'succeeded' })
 
