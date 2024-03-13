@@ -64,14 +64,8 @@ module.exports = {
 
 
             console.log("base64Url :",base64Url)
-            
             const base64 = base64Url.replace('-', '+').replace('_', '/')
-
             const payload = JSON.parse(atob(base64))
-
-
-            const payload = JSON.parse(atob(base64Url))
-
             res.status(200).json({ payload, token, message: 'succeeded' })
 
         } catch (error) {
