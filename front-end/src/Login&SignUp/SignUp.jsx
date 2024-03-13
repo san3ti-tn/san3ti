@@ -6,8 +6,8 @@ import {
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  MDBCol,
-  MDBRow,
+ // MDBCol,
+  //MDBRow,
   MDBInput,
   MDBCheckbox,
 

@@ -49,7 +49,6 @@ module.exports = {
             if (!passwordMatch) {
                 return res.status(401).json({ error: "password is incorrect." });
             }
-
             const token = jwt.sign({
                     userId: user.id
                 },
@@ -59,10 +58,7 @@ module.exports = {
                 }
 
             )
-
             const base64Url = token.split('.')[1]
-
-
             console.log("base64Url :",base64Url)
             const base64 = base64Url.replace('-', '+').replace('_', '/')
             const payload = JSON.parse(atob(base64))
