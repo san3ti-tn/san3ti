@@ -7,6 +7,7 @@ const sequelize = new Sequelize('profession', process.env.DB_USER, process.env.D
 })
 
 const User = require('../model/user.model.js')(sequelize, DataTypes);
+const Professions = require('../model/profession.model.js')(sequelize, DataTypes);
 
 
 const db = {}
@@ -14,9 +15,11 @@ const db = {}
 db.sequelize= sequelize
 db.Sequelize= Sequelize
 db.User= User
+db.Professions= Professions
 
 
-
+User.hasMany(Professions, { foreignKey: 'userId' })
+Professions.belongsTo(User, { foreignKey: 'userId' })
 
 
 
