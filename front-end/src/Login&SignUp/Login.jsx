@@ -6,7 +6,7 @@ import {
   MDBCol,
   MDBRow,
   MDBBtn,
-  MDBIcon,
+ // MDBIcon,
   MDBInput,
   MDBCheckbox
 }
@@ -17,15 +17,20 @@ function Login() {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   
- const signin = (email,password)=>{
-  axios.post("http://localhost:3000/api/users/signin",{
-email:email,
-password:password
-  }).then((result)=>{
-    console.log(result)
-  }).catch((error)=>{
-    console.log(error)
-  })
+ const signin = async (email,password)=>{
+  try{
+    const {data} = await axios.post("http://localhost:3000/api/users/signin",{
+      email:email,
+      password:password
+    })
+  const token = data.token
+  const id = data.payload.userId
+  localStorage.setItem('token', token)
+  localStorage.setItem('userId', id)
+}
+  catch(err){
+console.log("faild to signin :",err)
+  }
  } 
 
   return (
@@ -34,7 +39,7 @@ password:password
       <MDBRow>
 
         <MDBCol col='10' md='6'>
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image" />
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" className="img-fluid" alt="Phone image" />
         </MDBCol>
 
         <MDBCol col='4' md='6'>
