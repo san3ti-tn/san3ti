@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, Route , useNavigate } from "react-router-dom"
 import {
   MDBContainer,
   MDBCol,
@@ -14,6 +14,7 @@ from 'mdb-react-ui-kit';
 
 function Login() {
 
+  const navigate=useNavigate()
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   
@@ -27,6 +28,7 @@ function Login() {
   const id = data.payload.userId
   localStorage.setItem('token', token)
   localStorage.setItem('userId', id)
+  navigate("/home")
 }
   catch(err){
 console.log("faild to signin :",err)
@@ -54,9 +56,9 @@ console.log("faild to signin :",err)
             
           </div>
 
-          <MDBBtn onClick={()=>{signin(email,password)}} className="mb-4 w-100" size="lg">Sign in</MDBBtn>
-          <Link className="mb-4 w-100" size="lg" t
-          to="/" > Sign up </Link>
+          <MDBBtn onClick={()=>{
+            signin(email,password)}} className="mb-4 w-100" size="lg">Sign in</MDBBtn>
+         <MDBBtn  onClick={()=>{navigate("/signup")}} className="mb-4 w-100" size="lg">Sign up</MDBBtn>
 
 
           

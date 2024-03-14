@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import { Link } from "react-router-dom"
 import {
@@ -15,6 +16,8 @@ import {
   from 'mdb-react-ui-kit';
 
 function SignUp() {
+
+  const navigate=useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -25,6 +28,7 @@ password:password,
 email:email
     }).then((result)=>{
       console.log(result)
+      navigate("/home")
     }).catch((error)=>{
       console.log(error)
     })
@@ -49,7 +53,8 @@ email:email
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
           </div>
           <MDBBtn onClick={()=>{signup(password,email)}} className='w-100 mb-4' size='md'>sign up</MDBBtn>
-          <Link to="/login" >Log in </Link>
+          <MDBBtn onClick={()=>{navigate("/login")}} className='w-100 mb-4' size='md'>sign in</MDBBtn>
+          
 
 
 
