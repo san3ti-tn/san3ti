@@ -54,7 +54,7 @@ module.exports = {
                 },
                         process.env.jwt_Secret,
                 {
-                    expiresIn:"86400",
+                    expiresIn:"1d",
                 }
 
             )

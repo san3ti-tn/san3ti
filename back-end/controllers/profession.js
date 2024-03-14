@@ -44,7 +44,7 @@ res.status(404).json(err)
                 id : id
             }})
             console.log(result)
-            res.status(200).json(result[0],"updated !")
+            res.json(result[0],"updated !")
         }catch(err){
                 console.log(err)
                 res.status(404).json(err)
