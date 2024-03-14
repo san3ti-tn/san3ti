@@ -10,19 +10,26 @@ import {
 export default function App() {
 
 const [data,setData]=useState([])
-console.log(data)
+ console.log(data)
  const navigate = useNavigate()
 
- const getAll = async ()=>{
-   try{
-const {data}=  await axios("http://localhost:3000/api/profession/getAll")
-console.log(data.token)
-setData(data)
-} catch(error){
-console.log(error)
+ const getAll = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const res = await axios.get("http://localhost:3000/api/profession/getAll", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    setData(res.data);
+    
+    
+  } catch(error) {
+    console.log(error);
+  }
 }
-}
-getAll()
+
+
 useEffect(()=>{
 getAll()
 },[])
@@ -57,7 +64,10 @@ getAll()
                 outline
                 size="lg"
                 target="_blank"
-                onClick={()=>{getAll()}}
+                onClick={()=>{
+                  getAll()
+                  navigate('/professions')
+                }}
               >
                 Buy a service 
               </MDBBtn>
