@@ -1,21 +1,42 @@
 import React from 'react';
 import SignUp from './Login&SignUp/SignUp';
 import Login from './Login&SignUp/Login';
+import Create from './Createprofession/Create';
+import Home from './Home';
+import Allprofessions from './Professions/Allprofessions';
+import Porfessiondetail from './Professions/Porfessiondetail';
+
+
 
 import { createBrowserRouter ,RouterProvider } from "react-router-dom"
 
 function App() {
 
 const router = createBrowserRouter([
-  
   {
-  path : "/" ,
+  path : "/signup" ,
   element : <SignUp/>
+},
+{
+  path :"/",
+  element : <Login/>
+},
+{
+  path : "/home" ,
+  element : <Home/>
 },
 
 {
-  path :"/login",
-  element : <Login/>
+  path:"/create",
+  element : <Create/>
+},
+{
+  path:"/professions" ,
+  element : <Allprofessions/>
+},
+{
+ path : "/detail" , 
+ element : <Porfessiondetail/>
 }
 
 ])
