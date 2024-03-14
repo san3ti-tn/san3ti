@@ -26,3 +26,4 @@ const navigate = useNavigate()
     </MDBCard>
   );
 }
+
