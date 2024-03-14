@@ -53,7 +53,7 @@ email:email
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
           </div>
           <MDBBtn onClick={()=>{signup(password,email)}} className='w-100 mb-4' size='md'>sign up</MDBBtn>
-          <MDBBtn onClick={()=>{navigate("/login")}} className='w-100 mb-4' size='md'>sign in</MDBBtn>
+          <MDBBtn onClick={()=>{navigate("/")}} className='w-100 mb-4' size='md'>sign in</MDBBtn>
           
 
 
