@@ -16,7 +16,7 @@ import axios from 'axios';
 
 function App() {
 
-  const navigate =useNavigate()
+  
 
    const [name,setName]=useState("") 
    const [category,setCategory]=useState("")
@@ -51,7 +51,8 @@ function App() {
       } catch (error) {
         console.log(error);
       }
-  };
+  }
+  const navigate=useNavigate()
   return (
     <MDBContainer className='body' fluid>
 
@@ -71,7 +72,8 @@ function App() {
              
 
               
-              <MDBBtn   outline className='mx-2 px-5' color='white' size='lg' onClick={()=>{profileUpLoad();navigate="/professions"}}>
+              <MDBBtn   outline className='mx-2 px-5' color='white' size='lg' onClick={()=>{profileUpLoad() 
+                navigate("/professions")}}>
                 Create Service 
               </MDBBtn>
 
