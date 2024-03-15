@@ -5,11 +5,11 @@ const router = express.Router()
 
 const { createProfile,getAllUsers,signin } = require('../controllers/users')
 
-router.route('/users').get(getAllUsers)
+router.route('/').get(getAllUsers)
 
-router.post('/users/signup',createProfile)
+router.post('/signup',createProfile)
 
-router.post('/users/signin',signin)
+router.post('/signin',signin)
 
 
 
