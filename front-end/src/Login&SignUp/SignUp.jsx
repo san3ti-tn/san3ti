@@ -21,18 +21,18 @@ function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-
-  const signup = (password,email)=>{
-    axios.post("http://localhost:3000/api/users/signup",{
-password:password,
-email:email
-    }).then((result)=>{
-      console.log(result)
-      navigate("/home")
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }  
+  const signup = async(password, email)=>{
+    try {
+      await axios.post('http://localhost:3000/api/users/signup',{
+ password: password,
+ email: email,
+})
+  alert('Signup successful!')
+  navigate('/home')
+    } catch (error) {
+      alert('Signup failed. Please try again later.')
+    }
+  }
 
 
   
