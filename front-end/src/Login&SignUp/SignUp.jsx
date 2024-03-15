@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import { Link } from "react-router-dom"
 import {
@@ -6,8 +7,8 @@ import {
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  MDBCol,
-  MDBRow,
+ // MDBCol,
+  //MDBRow,
   MDBInput,
   MDBCheckbox,
 
@@ -15,20 +16,23 @@ import {
   from 'mdb-react-ui-kit';
 
 function SignUp() {
+
+  const navigate=useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-
-  const signup = (password,email)=>{
-    axios.post("http://localhost:3000/api/users/signup",{
-password:password,
-email:email
-    }).then((result)=>{
-      console.log(result)
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }  
+  const signup = async(password, email)=>{
+    try {
+      await axios.post('http://localhost:3000/api/users/signup',{
+ password: password,
+ email: email,
+})
+  alert('Signup successful!')
+  navigate('/home')
+    } catch (error) {
+      alert('Signup failed. Please try again later.')
+    }
+  }
 
 
   
@@ -49,7 +53,8 @@ email:email
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
           </div>
           <MDBBtn onClick={()=>{signup(password,email)}} className='w-100 mb-4' size='md'>sign up</MDBBtn>
-          <Link to="/login" >Log in </Link>
+          <MDBBtn onClick={()=>{navigate("/")}} className='w-100 mb-4' size='md'>sign in</MDBBtn>
+          
 
 
 

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         category: {
-            type: DataTypes.ENUM('jobType1', 'jobType2', 'jobType3'),
+            type: DataTypes.STRING,
             allowNull: false
         },
         imageUrl: {
