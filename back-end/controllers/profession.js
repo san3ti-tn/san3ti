@@ -54,7 +54,7 @@ module.exports = {
         }
       );
       console.log(result);
-      res.status(200).json(result[0], "updated !");
+      res.status(200).json({result: result[0], message: "updated !"})
     } catch (err) {
       console.log(err);
       res.status(404).json(err);
