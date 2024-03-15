@@ -9,12 +9,8 @@ import {
 
 export default function App() {
 
-
  const navigate = useNavigate()
-
-
   return (
-  
    <header>
       <div
         id='intro-example'
