@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 function Porfessiondetail() {
   const { id } = useParams()
   const [data, setData] = useState({})
+
+  const navigate = useNavigate()
+
+
+
 console.log(data)
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +29,26 @@ console.log(data)
     fetchData()
   }, [id])
 
+
+
+  const deleteProffesion = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://localhost:3000/api/profession/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}` 
+
+        }
+      })
+      navigate('/professions')
+    } catch (error) {
+      console.error('Error deleting profession:', error)
+    }
+  }
+
+
+
+  
   return (
     <div>
       <h2>Profession Detail</h2>
@@ -34,6 +59,7 @@ console.log(data)
         <li>{data.category}</li>
         
       </ul>
+      <button onClick={deleteProffesion}>Delete</button>
     </div>
   );
 }
