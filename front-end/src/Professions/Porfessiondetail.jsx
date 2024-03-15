@@ -35,7 +35,6 @@ function Porfessiondetail() {
   const handleVis = () => {
     setVis(!vis);
   };
-
   const update = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -54,18 +53,8 @@ function Porfessiondetail() {
             Authorization: `Bearer ${token}`,
           },
         }
-      );
-
-      const response = await axios.get(
-        `http://localhost:3000/api/profession/getOne/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setData(response.data);
-
+      )
+      fetchData()
       setVis(false);
     } catch (err) {
       console.log("Error updating profession:", err);
@@ -152,9 +141,11 @@ function Porfessiondetail() {
           </div>
         )}
       </ul>
+      <div>
       <button onClick={deleteProffesion}>Delete</button>
+  <button onClick={()=>{navigate('/professions')}} >  go back to all Profession</button>
+      </div>
     </div>
-  );
+  )
 }
-
 export default Porfessiondetail;
