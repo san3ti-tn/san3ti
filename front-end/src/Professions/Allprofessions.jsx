@@ -5,7 +5,8 @@ import axios from 'axios'
 
 function Allprofessions() {
   const [data,setData]=useState([])
-  console.log(data)
+  const [term,setterm]=useState("")
+
   const navigate = useNavigate()
  
   const getAll = async () => {
@@ -28,16 +29,17 @@ function Allprofessions() {
  useEffect(()=>{
  getAll()
  },[])
- 
+ const searched = (term) => {
+  return data.filter((service) => service.category.toLowerCase().indexOf(term.toLowerCase()) >= 0).map((service, index) => (
+    <center><Professions service={service} /></center>
+  ))}
 
  
-  return (
-    <div>
-        {data.map((service)=>{
-         return (
-          <Professions service={service} />
-         )   
-        })}
+  return (<div>
+    <center><input type="text" placeholder="write a title" onChange={(e) => setterm(e.target.value)} /> </center>
+    <div className='grid-container'>
+        {searched(term)}
+    </div>
     </div>
   )
 }
