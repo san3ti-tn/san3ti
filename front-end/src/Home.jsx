@@ -9,26 +9,8 @@ import {
 
 export default function App() {
 
-const [data,setData]=useState([])
-console.log(data)
  const navigate = useNavigate()
-
- const getAll = async ()=>{
-   try{
-const {data}=  await axios("http://localhost:3000/api/profession/getAll")
-console.log(data.token)
-setData(data)
-} catch(error){
-console.log(error)
-}
-}
-getAll()
-useEffect(()=>{
-getAll()
-},[])
-
   return (
-  
    <header>
       <div
         id='intro-example'
@@ -57,7 +39,10 @@ getAll()
                 outline
                 size="lg"
                 target="_blank"
-                onClick={()=>{getAll()}}
+                onClick={()=>{
+                 
+                  navigate('/professions')
+                }}
               >
                 Buy a service 
               </MDBBtn>
