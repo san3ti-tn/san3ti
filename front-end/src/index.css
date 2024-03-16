@@ -21,14 +21,13 @@
   width: 400px;
 }
 .body {
+  margin-top: 140px ;
+  background-image: url("https://img.freepik.com/photos-gratuite/recrutement-emploi-poste-vacant-entretien-equipe-recrutement-carriere_53876-121268.jpg");
 
-  background: #6a11cb;
-  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-  height: 730px;
+  
 }
 input{
-  color: white;
+  color: black;
 }
 .grid-container {
   padding: 50px; 
@@ -37,7 +36,116 @@ input{
   justify-content: space-between; 
 }
 
+.creating{
+  margin-right: 100px;
+}
+.navigater{
+  margin-top: 30px;
+  background-color: #3b71ca;
+  padding: 30px ;
+}
+
 .card-style {
   width: 300px; 
   margin-bottom: 20px; 
+}
+
+.input{
+  color: white !important;
+}
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0 1em 0;
+  max-width: 190px;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #e8e8e8;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+
+.profession-detail-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.profession-detail-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profession-detail-list {
+  list-style: none;
+  padding: 0;
+}
+
+.profession-detail-item {
+  margin-bottom: 10px;
+}
+
+.update-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.update-button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.back-button {
+  padding: 8px 16px;
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
