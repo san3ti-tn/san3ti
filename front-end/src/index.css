@@ -34,7 +34,6 @@
 
 .body {
   
-  
   background: #6a11cb;
 
   
@@ -47,4 +46,15 @@
 
 input{
   color: white;
+}
+.grid-container {
+  padding: 50px; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
+.card-style {
+  width: 300px; 
+  margin-bottom: 20px; 
 }
