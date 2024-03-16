@@ -1,5 +1,4 @@
 
-
 .divider:after,
 .divider:before {
   content: "";
@@ -7,43 +6,27 @@
   height: 1px;
   background: #eee;
 }
-
-
-
-
 /* Height for devices larger than 992px */
 @media (min-width: 992px) {
   #intro-example {
     height: 750px;
   }
 }
-
-
- 
 .profimage {
   height: 300px;
   width: 50vh ;
   
 }
-
 .card-style{
   width: 400px;
 }
-
-
-
 .body {
-  
+
   background: #6a11cb;
-
-  
   background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-
-  
   background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
   height: 730px;
 }
-
 input{
   color: white;
 }
