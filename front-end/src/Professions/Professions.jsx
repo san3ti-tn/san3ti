@@ -8,7 +8,6 @@ import {
   MDBCardImage,
   MDBBtn
 } from 'mdb-react-ui-kit';
-
 export default function Professions({service}) {
     console.log(service)
 const navigate = useNavigate()
@@ -21,9 +20,8 @@ const navigate = useNavigate()
         <MDBCardTitle>{service.profession}</MDBCardTitle>
         <MDBCardTitle>{service.category}</MDBCardTitle>
         </MDBCardText>
-        <MDBBtn  onClick={()=>{navigate("/detail")}}  >Read More </MDBBtn>
+        <MDBBtn onClick={()=>{navigate(`/detail/${service.id}`)}}>Read More </MDBBtn>
       </MDBCardBody>
     </MDBCard>
   );
 }
-
