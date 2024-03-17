@@ -31,6 +31,9 @@ function App() {
   }, [imageUrl])
 
   const profileUpLoad = async () => {
+    if ((!name||!category||!profession||!imageUrl)) {
+      return alert('should fill inputs')   
+     }
     const formData = new FormData()
     formData.append("file", file)
     formData.append("upload_preset", "unsigned-upload")

@@ -15,7 +15,7 @@ export default function App() {
       <div
         id='intro-example'
         className='p-5 text-center bg-image'
-        style={{ backgroundImage: "url('https://mdbootstrap.com/img/new/slides/041.webp')" }}
+        style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUztsDP1zeKraHsstdinhf7hIJL5TIfxYFA&usqp=CAU')" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
