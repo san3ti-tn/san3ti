@@ -51,6 +51,9 @@ function Porfessiondetail() {
     setVis(!vis);
   };
   const update = async () => {
+    if ((!name||!category||!profession)) {
+     return alert('should fill inputs')   
+    }
     try {
       const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
@@ -74,6 +77,7 @@ function Porfessiondetail() {
     } catch (err) {
       console.log("Error updating profession:", err);
     }
+    navigate("/professions");
   };
 
   const deleteProffesion = async () => {
@@ -91,11 +95,12 @@ function Porfessiondetail() {
   };
 
   return (
+   <center> <div className="detailed"> 
 <div className="profession-detail-container">
   <h2 className="profession-detail-heading">Profession Detail</h2>
   <ul className="profession-detail-list">
     <li>
-      <img className="profession-image" src={data.imageUrl} alt="Profession" />
+      <img  className="profession-image" src={data.imageUrl} alt="Profession" />
     </li>
     <li className="profession-detail-item">
       name : {data.name}{" "}
@@ -141,7 +146,7 @@ function Porfessiondetail() {
         <button className="update-button"
           onClick={() => {
             update();
-            navigate("/professions");
+            
           }}
         >
           Update
@@ -165,6 +170,7 @@ function Porfessiondetail() {
     <button className="back-button" onClick={() => { navigate('/professions') }}>Go back to all Professions</button>
   </div>
 </div>
-  )
+</div>
+</center> )
 }
 export default Porfessiondetail;

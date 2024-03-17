@@ -149,3 +149,12 @@ input{
   border-radius: 3px;
   cursor: pointer;
 }
+
+.detailed{
+  display: center;
+}
+
+.profession-image{
+  width: 400px;
+  border-radius: 30px;
+}
