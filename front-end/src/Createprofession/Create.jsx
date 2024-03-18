@@ -31,6 +31,9 @@ function App() {
   }, [imageUrl])
 
   const profileUpLoad = async () => {
+    if ((!name||!category||!profession||!imageUrl)) {
+      return alert('should fill inputs')   
+     }
     const formData = new FormData()
     formData.append("file", file)
     formData.append("upload_preset", "unsigned-upload")
@@ -46,7 +49,6 @@ function App() {
 
 
   const handleSubmit = async () => {
-    console.log('aaaa joh', imageUrl);
     try {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem("userId");
@@ -67,7 +69,10 @@ function App() {
 
   const navigate = useNavigate()
   return (
-    <MDBContainer className='body' fluid>
+   
+    <MDBContainer  className='body' fluid>
+   <center> <h1>Add your </h1></center><br />
+   <div>  </div>
 
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         <MDBCol col='12'>
@@ -78,10 +83,10 @@ function App() {
               <h2 className="fw-bold mb-2 text-uppercase"></h2>
               <p className="text-white-50 mb-5">Please provide your service information</p>
 
-              <MDBInput onChange={(e) => { setName(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='name' id='formControlLg' type='email' size="lg" />
-              <MDBInput onChange={(e) => { setCategory(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='category' id='formControlLg' type='text' size="lg" />
-              <MDBInput onChange={(e) => { setFile(e.target.files[0]) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' id='formControlLg' type='file' size="lg" />
-              <MDBInput onChange={(e) => { setProfession(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='profession' id='formControlLg' type='text' size="lg" />
+              <MDBInput className='input' onChange={(e) => { setName(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='name' id='formControlLg' type='email' size="lg" />
+              <MDBInput className='input' onChange={(e) => { setCategory(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='category' id='formControlLg' type='text' size="lg" />
+              <MDBInput  className='input' onChange={(e) => { setFile(e.target.files[0]) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' id='formControlLg' type='file' size="lg" />
+              <MDBInput className='input' onChange={(e) => { setProfession(e.target.value) }} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='profession' id='formControlLg' type='text' size="lg" />
 
 
 
@@ -89,6 +94,10 @@ function App() {
                 profileUpLoad();
               }}>
                 Create Service
+              </MDBBtn>
+              <MDBBtn   outline className='mx-2 px-5' color='white' size='lg' onClick={() => { navigate("/professions")
+              }}>
+                Professions 
               </MDBBtn>
 
 
@@ -100,7 +109,8 @@ function App() {
       </MDBRow>
 
     </MDBContainer>
-  );
+   
+    );
 }
 
 export default App;

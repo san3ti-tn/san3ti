@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 function Porfessiondetail() {
   const { id } = useParams();
@@ -9,9 +9,22 @@ function Porfessiondetail() {
   const [category, setCategory] = useState("");
   const [profession, setProfession] = useState("");
   const [vis, setVis] = useState(false);
+  const [dummy, setdummy] = useState(false);
+
+  const userId = localStorage.getItem("userId");
+  const { state } = useLocation()
+  const service = state
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (service.userId==userId) {
+      setdummy(!dummy)
+    }
+    
+ 
+
+   
+   
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -29,13 +42,18 @@ function Porfessiondetail() {
       }
     };
 
+
     fetchData();
+
   }, [id]);
 
   const handleVis = () => {
     setVis(!vis);
   };
   const update = async () => {
+    if ((!name||!category||!profession)) {
+     return alert('should fill inputs')   
+    }
     try {
       const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
@@ -59,6 +77,7 @@ function Porfessiondetail() {
     } catch (err) {
       console.log("Error updating profession:", err);
     }
+    navigate("/professions");
   };
 
   const deleteProffesion = async () => {
@@ -76,76 +95,82 @@ function Porfessiondetail() {
   };
 
   return (
-    <div>
-      <h2>Profession Detail</h2>
-      <ul>
-        <li>
-          <img src={data.imageUrl} alt="Profession" />
-        </li>
-        <li>
-          name : {data.name}{" "}
-          {vis && (
-            <input
-              placeholder="update name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          )}
-        </li>
-        <li>
-          profession: {data.profession}{" "}
-          {vis && (
-            <input
-              placeholder="update profession"
-              value={profession}
-              onChange={(e) => {
-                setProfession(e.target.value);
-              }}
-            />
-          )}
-        </li>
-        <li>
-          category : {data.category}{" "}
-          {vis && (
-            <input
-              placeholder="update category"
-              value={category}
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
-            />
-          )}
-        </li>
-        {vis ? (
-          <div>
-            <button
-              onClick={() => {
-                update();
-                navigate("/professions");
-              }}
-            >
-              Update
-            </button>
-          </div>
-        ) : (
-          <div>
-            <button
-              onClick={() => {
-                handleVis(true);
-              }}
-            >
-              Edit
-            </button>
-          </div>
-        )}
-      </ul>
+   <center> <div className="detailed"> 
+<div className="profession-detail-container">
+  <h2 className="profession-detail-heading">Profession Detail</h2>
+  <ul className="profession-detail-list">
+    <li>
+      <img  className="profession-image" src={data.imageUrl} alt="Profession" />
+    </li>
+    <li className="profession-detail-item">
+      name : {data.name}{" "}
+      {vis && (
+        <input
+          className="update-input"
+          placeholder="update name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+      )}
+    </li>
+    <li className="profession-detail-item">
+      profession: {data.profession}{" "}
+      {vis && (
+        <input
+          className="update-input"
+          placeholder="update profession"
+          value={profession}
+          onChange={(e) => {
+            setProfession(e.target.value);
+          }}
+        />
+      )}
+    </li>
+    <li className="profession-detail-item">
+      category : {data.category}{" "}
+      {vis && (
+        <input
+          className="update-input"
+          placeholder="update category"
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+        />
+      )}
+    </li>
+    {vis ? (
       <div>
-      <button onClick={deleteProffesion}>Delete</button>
-  <button onClick={()=>{navigate('/professions')}} >  go back to all Profession</button>
+        <button className="update-button"
+          onClick={() => {
+            update();
+            
+          }}
+        >
+          Update
+        </button>
       </div>
-    </div>
-  )
+    ) : dummy ? (
+      <div>
+        <button className="edit-button"
+          onClick={() => {
+            handleVis(true);
+          }}
+        >
+          Edit
+        </button>
+        <button className="delete-button" onClick={deleteProffesion}>Delete</button>
+      </div>
+    ) : <div></div>}
+  </ul>
+
+  <div>
+    <button className="back-button" onClick={() => { navigate('/professions') }}>Go back to all Professions</button>
+  </div>
+</div>
+</div>
+</center> )
 }
 export default Porfessiondetail;
